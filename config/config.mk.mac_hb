@@ -1,0 +1,20 @@
+# C++ compiler
+cxx=g++-13 -fopenmp
+
+# Compilation flags
+cflags=-Wall -ansi -pedantic -O3
+
+# BLAS/LAPACK flags for linear algebra
+lp_lflags=-framework Accelerate
+
+# FFTW flags (installed via Homebrew)
+fftw_iflags=
+fftw_lflags=-lfftw3
+
+# libpng flags (installed via Homebrew)
+png_iflags=
+png_lflags=-lpng
+
+# Voro++ flags
+voro_iflags=-I/usr/local/include/voro++
+voro_lflags=-L/usr/local/lib -lvoro++

@@ -1,0 +1,42 @@
+# PSI pouring LAMMPS input file 
+atom_style   granular
+boundary     fm fm fm
+newton       off
+communicate  single vel yes
+
+# Region setup
+#region		   reg block -25 25 -4 4 -10 170 units box
+#create_box	   1 reg
+read_restart  silo_pour.60000000
+
+# Neighbor computation setup
+neighbor      0.2 bin
+neigh_modify  delay 0
+
+# Pair interaction
+pair_style      gran/hooke/history 2000000 NULL 158.113883 NULL 0.5 0
+pair_coeff      * *
+timestep        0.000025
+
+# Walls and gravity
+fix     1 all nve/sphere
+fix     2 all gravity 1.0 spherical 0.0 -180.0
+fix     xpair all wall/gran 2000000 NULL 158.113883 NULL 0.5 0 xplane -25 25
+fix     ypair all wall/gran 2000000 NULL 158.113883 NULL 0.5 0 yplane -4 4
+#fix     zlower all wall/gran 2000000 NULL 158.113883 NULL 0.5 0 zplane -0.000001 170
+fix     zs all wall/gran 2000000 NULL 158.113883 NULL 0.5 0 zslit -10 0 3 0 -1
+
+# Particle insertion
+#region     bo block -24.5 24.5 -3.5 3.5 150.5 169.5 units box
+#fix		ins all pour 55000 1 300719 dens 1.90985931710274 1.90985931710274 vol 0.1 50 region bo
+
+# Thermodynamic information
+compute        1 all erotate/sphere
+thermo_style   custom step atoms ke c_1 vol
+thermo         10000
+thermo_modify  lost ignore norm no
+
+# Simulation output
+dump            id all atom 5000 silo_drain.dump.1
+restart         10000000 silo_drain
+run             100000000

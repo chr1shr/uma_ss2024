@@ -1,4 +1,4 @@
-# UMass Summer School 2024 - Computational geometry for soft matter
+# UMass Summer School 2024 – Computational geometry for soft matter
 This repository contains programs and data files from [Chris
 Rycroft's](https://people.math.wisc.edu/~chr) lectures at the UMass Amherst
 [Summer School on Soft Solids and Complex Fluids](https://websites.umass.edu/softmatter/program-2024/),
@@ -35,51 +35,51 @@ them.
 # Directories
 The programs are provided in the following directories
 
-- **dem** - contains input files for LAMMPS for creating discrete-element
+- **dem** – contains input files for LAMMPS for creating discrete-element
   method (DEM) simulations presented in lecture 1
 
-- **simpdens** - contains files for computing the local density of a regular
+- **simpdens** – contains files for computing the local density of a regular
   two-dimensional packing using two simple methods
 
-- **void** - Implements the void model of particle drainage that was introduced
+- **void** – Implements the void model of particle drainage that was introduced
   in lecture 1
 
-- **voro2d** - Implements the two-dimensional Voronoi tessellation on several
+- **voro2d** – Implements the two-dimensional Voronoi tessellation on several
   small test arrangements, using [Voro++](https://math.lbl.gov/voro++)
 
-- **tet** - Creates a movie of a rotating Voronoi tessellation in a tetrahedron
+- **tet** – Creates a movie of a rotating Voronoi tessellation in a tetrahedron
 
-- **triangulate** - Performs the triangulation of the summer school
+- **triangulate** – Performs the triangulation of the summer school
   participants reconstructed from photos in lecture 1, and uses the Voronoi
   tessellation to examine their neighbor relationships
 
 # Additional resources
 Several other software packages were referenced throughout the lectures
 
-- [LAMMPS](https://lammps.sandia.gov) - the Large Atomic/Molecular Massively
+- [LAMMPS](https://lammps.sandia.gov) – the Large Atomic/Molecular Massively
   Parallel Simulator is a widely-used software package developed at Sandia
   National Laboratories
 
-- [Voro++](https://math.lbl.gov/voro++) - this software package was released by
+- [Voro++](https://math.lbl.gov/voro++) – this software package was released by
   Chris Rycroft in 2009 [1] and performs cell-based computations of the Voronoi
   tessellation in two and three dimensions
 
-- [Zeo++](https://www.zeoplusplus.org) - this software package builds on Voro++
+- [Zeo++](https://www.zeoplusplus.org) – this software package builds on Voro++
   to perform high-throughput geometric analyses of crystalline porous materials
   [2]
 
-- [VoroTop](https://www.vorotop.org) - this software package builds on Voro++
+- [VoroTop](https://www.vorotop.org) – this software package builds on Voro++
   to analyze particle packings using the topology of their Voronoi cells [3,4]
 
-- [TriMe++](https://github.com/jiayinlu19960224/TriMe) - this software package
+- [TriMe++](https://github.com/jiayinlu19960224/TriMe) – this software package
   builds on a multithreaded extension of Voro++ [5] to create two-dimensional
   triangular meshes efficiently [6].
 
-- [IncRMT](https://github.com/chr1shr/incrmt) - this software project implements
+- [IncRMT](https://github.com/chr1shr/incrmt) – this software project implements
   the incompressible reference map technique in two dimensions [7,8], and was
   used to create many of the movies show in lecture 4.
 
-- [RMT3D](https://github.com/ylunalin/RMT3D) - this software project implements
+- [RMT3D](https://github.com/ylunalin/RMT3D) – this software project implements
   the incompressible reference map technique in three dimensions and in
   parallel [9], and was used to create the final movie in lecture 4.
 
