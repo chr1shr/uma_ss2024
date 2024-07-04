@@ -1,0 +1,2 @@
+common.o: common.cc common.hh
+void.o: void.cc void.hh common.hh
