@@ -1,7 +1,8 @@
-# UMass Summer School 2024 – Computational geometry for soft matter
+# UMass Amherst Summer School 2024 – Computational geometry for soft matter
 This repository contains programs and data files from [Chris
 Rycroft's](https://people.math.wisc.edu/~chr) lectures at the UMass Amherst
-[Summer School on Soft Solids and Complex Fluids](https://websites.umass.edu/softmatter/program-2024/),
+[Summer School on Soft Solids and Complex
+Fluids](https://websites.umass.edu/softmatter/program-2024/),
 which took place from June 2–6, 2024.
 
 Some of the codes are written in C++. To compile these, it is necessary to set
@@ -31,6 +32,49 @@ cp config/config.mk.mac_hb ../config.mk
 ```
 After this, typing `make` within any directory with C++ programs will compile
 them.
+
+# Associated software
+Several of the programs generate output that can be read by the freeware
+plotting program [Gnuplot](http://gnuplot.info). By default, Gnuplot can plot
+data in text files with entries separated by spaces or tabs, but it can also
+plot analytical functions and data files in binary format.
+
+Some of the programs create files that can be rendered using
+[POV-Ray](https://www.povray.org), a freeware ray-tracer. POV-Ray input files
+contain text commands to set up a photo-realistic scene, including the position
+of the camera, lights, and objects. POV-Ray can render scenes at varying levels
+of quality. Simple scenes at low quality render in seconds, whereas more
+complicated scenes at higher quality may take minutes. The most recent version
+of POV-Ray (3.7) can fully take advantage of multithreaded rendering.
+
+Some scripts generate sequences of images that can be assembled into a movie
+using [FFmpeg](https://ffmpeg.org). FFmpeg can create movies in many different
+formats, but by default the scripts create QuickTime movies using the
+[HEVC/H.265 codec](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding).
+
+# Rendering on multiple hosts
+Rendering many POV-Ray images at high quality for a movie can take a long time.
+Because of this, several of the scripts allow for the different frames of the
+movies to be rendered in parallel across multiple hosts. To do this, the host
+computer running the script must have
+[SSH](https://en.wikipedia.org/wiki/Secure_Shell) access to the rendering
+hosts, using passwordless login via [SSH
+keys](https://www.ssh.com/academy/ssh-keys). The script requires a
+file called **rhosts** in the top level directory that lists out the names of
+the hosts to use. A example called **rhosts.example** is provided in the
+**config** directory, and looks like this:
+```
+render
+localhost 10
+host1.com 8
+host2.com 4
+```
+The first line contains the directory (in this case **render**) on the remote
+hosts in which to run POV-Ray and generate the images. The subsequent lines
+contain the names of the hosts, along with the number of threads to run POV-Ray
+with. The scripts pass out the frames to each host, and once one host has
+completed its frame, then another one is passed out to it. Any lines beginning
+with `#` in the **rhosts** file are treated as a comment and ignored.
 
 # Directories
 The programs are provided in the following directories
@@ -96,7 +140,8 @@ Several other software packages were referenced throughout the lectures
 
 3. E. A. Lazar, J. Han, and D. J. Srolovitz, *Topological framework for local
    structure analysis in condensed matter*, Proc. Natl. Acad. Sci. **112**,
-   E5769–E5776 (2015). [doi:10.1073/pnas.1505788112](https://doi.org/10.1073/pnas.1505788112)
+   E5769–E5776 (2015).
+   [doi:10.1073/pnas.1505788112](https://doi.org/10.1073/pnas.1505788112)
 
 4. E. A. Lazar, J. Lu, C. H. Rycroft, and D. Schwartz, *Voronoi topology in two
    dimensions: theory, algorithms, and applications*,
