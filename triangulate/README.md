@@ -2,13 +2,13 @@
 Lecture 1 featured an activity where each participant was given a colored
 circle indicating a unique particle ID number. They were then asked to:
 
-(a) Look around the room and write down a list of IDs of their neighbors, using
+a. Look around the room and write down a list of IDs of their neighbors, using
     their intuition about what a neighbor is.
 
-(b) Look around the room and write down a list of IDs of their neighbors,
+b. Look around the room and write down a list of IDs of their neighbors,
     based on their Voronoi cells sharing a face.
 
-(c) Estimate the area of their Voronoi cell.
+c. Estimate the area of their Voronoi cell.
 
 Photos of the participants were then taken from the two sides of the lecture
 room. This is enough to reconstruct everyone's position using triangulation, as
