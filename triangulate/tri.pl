@@ -1,3 +1,4 @@
+#!/usr/bin/perl
 use Math::Trig;
 
 # Width in pixels of each image
