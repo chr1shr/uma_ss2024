@@ -31,7 +31,11 @@ On a Mac using GCC installed via [Homebrew](http://brew.sh), type
 cp config/config.mk.mac_hb ../config.mk
 ```
 After this, typing `make` within any directory with C++ programs will compile
-them.
+them. Several programs make use of Voro++, and it is necessary to have the
+`dev` branch from the [Voro++ GitHub
+repository](https://github.com/chr1shr/voro) installed. The variables
+`voro_iflags` and `voro_lflags` in the configuration file control the compiler
+flags required to compile and link to Voro++.
 
 # Associated software
 Several of the programs generate output that can be read by the freeware
@@ -98,7 +102,7 @@ The programs are provided in the following directories
   tessellation to examine their neighbor relationships
 
 # Additional resources
-Several other software packages were referenced throughout the lectures
+Several other software packages were referenced throughout the lectures:
 
 - [LAMMPS](https://lammps.sandia.gov) – the Large Atomic/Molecular Massively
   Parallel Simulator is a widely-used software package developed at Sandia

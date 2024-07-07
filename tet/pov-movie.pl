@@ -1,7 +1,8 @@
 #!/usr/bin/perl
-use Math::Trig;
 use Getopt::Std;
+use Math::Trig;
 getopts("hrv");
+
 
 # Print help information if requested
 if($opt_h) {
@@ -36,32 +37,45 @@ if($opt_r) {
 $a=0;$first=1;
 $maxcols=1;
 $verb=$opt_v?"":">/dev/null 2>/dev/null";
+# Set constants
+$a=0;$first=1;
+$maxcols=1;
+$verb=$opt_v?"":">/dev/null 2>/dev/null";
+#$pov_opts="+H1280 +W1280 +A0.0001 +R9 -J";    # Extreme quality
+$pov_opts="+H640 +W640 +A0.3 -J";              # Moderate quality
 
-# Set POV-Ray rendering quality options
-#$pov_opts="+H1200 +W700 +A0.0001 +R9 -J";    # Extreme quality
-$pov_opts="+H1200 +W700 +A0.3 -J";           # Moderate quality
+# Create output directory
+$dr="tetrahedron.odr";
+mkdir $dr;
 
-$dr="void.odr";
+foreach $a (0..30) {
 
-foreach $a (0..800) {
+    $fn=sprintf "fr_%04d.png",$a;
 
-    # Assemble first section of POV-Ray input file from the master template
+    # Assemble first section of POV-Ray input file from the
+    # master template
     $tf="rtemp$h.pov";
     open T,$opt_r?"| bzip2 -9 -c >$dr/$tf.bz2":">$dr/$tf" or die "Can't open temporary POV file\n";
-    open M,"master.pov";
+    open M,"tetrahedron.pov";
+    $clo=$a/3.;
     while(<M>) {
-        last if m/PARTICLES/;
-        print T;
+        if(/PARTICLES/) {
+            open E,"tetrahedron_p.pov";
+            print T while <E>;
+            close E;
+        } elsif(/VORONOI/) {
+            open E,"tetrahedron_v.pov";
+            print T while <E>;
+            close E;
+        } else {
+            s/CLOCK/$clo/;
+            print T;
+        }
     }
-
-    $df=sprintf "$dr/fr_%04d.inc",$a;
-    open M,$df or die;
-    print T while <M>;
     close M;
     close T;
 
     # Send the POV-Ray file to a node for processing
-    $fn=sprintf "fr_%04d.png",$a;
     $pov_cmd="nice -n 19 povray $tf -D +O$fn $pov_opts";
     if($opt_r) {
 
@@ -89,8 +103,8 @@ foreach $a (0..800) {
 }
 
 # Wait for all the remaining forked jobs to finish
-print wait foreach 1..($queue?$nodes:$h);
+wait foreach 1..($queue?$nodes:$h);
 
 # Convert the frames into a movie. Change "veryslow" to "fast" for faster
 # conversion but with slightly larger file size.
-system "ffmpeg -r 60 -y -i $dr/fr_%4d.png -preset veryslow -c:v libx265 -crf 17 -pix_fmt yuv420p -tag:v hvc1 -movflags faststart void_model.mov";
+system "ffmpeg -r 60 -y -i tetrahedron.odr/fr_%4d.png -preset veryslow -c:v libx265 -crf 17 -pix_fmt yuv420p -tag:v hvc1 -movflags faststart tetrahedron.mov";

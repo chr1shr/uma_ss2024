@@ -47,7 +47,7 @@ require adjustments in order to compile with the current LAMMPS version.
 2. C. H. Rycroft, T. Lind, S. G&uuml;ntay, and A. Dehbi, *Granular flows in
    pebble bed reactors: dust generation and scaling*, proceedings of [ICAPP
    2012](http://icapp.ans.org/), Chicago, June 24&#8211;28, 2012.
-   [[Paper]](http://math.lbl.gov/~chr/papers/12328-final.pdf")
+   [[Paper]](http://math.lbl.gov/~chr/papers/12328-final.pdf)
 
 3. C. H. Rycroft, A. Dehbi, T. Lind, and S. G&uuml;ntay, *Granular flow in
    pebble-bed nuclear reactors: Scaling, dust generation, and stress*, Nucl.
