@@ -3,7 +3,6 @@ use Getopt::Std;
 use Math::Trig;
 getopts("hrv");
 
-
 # Print help information if requested
 if($opt_h) {
     print "Usage: ./povray {options}\n\n";
@@ -33,10 +32,6 @@ if($opt_r) {
     $queue=$nodes==1?1:0;$h=0;
 }
 
-# Set constants
-$a=0;$first=1;
-$maxcols=1;
-$verb=$opt_v?"":">/dev/null 2>/dev/null";
 # Set constants
 $a=0;$first=1;
 $maxcols=1;

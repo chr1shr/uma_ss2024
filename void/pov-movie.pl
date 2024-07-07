@@ -39,11 +39,11 @@ $verb=$opt_v?"":">/dev/null 2>/dev/null";
 
 # Set POV-Ray rendering quality options
 #$pov_opts="+H1200 +W700 +A0.0001 +R9 -J";    # Extreme quality
-$pov_opts="+H1200 +W700 +A0.3 -J";           # Moderate quality
+$pov_opts="+H1200 +W700 +A0.3 -J";            # Moderate quality
 
 $dr="void.odr";
 
-foreach $a (0..800) {
+foreach $a (0..1) {
 
     # Assemble first section of POV-Ray input file from the master template
     $tf="rtemp$h.pov";
