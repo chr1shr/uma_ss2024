@@ -10,8 +10,8 @@ up a common configuration file as described in the next section. Some of the
 other codes are written using Perl, a scripting language that is particularly
 useful for rapid text file parsing and analysis.
 
-Slides and additional material from the lectures are available on
-[Chris Rycroft's website](https://people.math.wisc.edu/~chr/events/uma_ss2024).
+Slides and additional material from the lectures are [available on
+Chris Rycroft's website](https://people.math.wisc.edu/~chr/events/umass).
 
 # C++ compiler setup
 The C++ programs use [GNU Make](https://www.gnu.org/software/make/) to simplify
